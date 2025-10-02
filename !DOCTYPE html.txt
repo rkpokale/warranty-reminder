@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>StyleNest</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Poppins&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom right, #87CEEB, #f8c8dc);
+      min-height: 100vh;
+    }
+
+    .hidden { display: none; }
+
+    /* Login Page */
+    #loginPage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      position: relative;
+    }
+
+    .brand-header {
+      position: absolute;
+      top: 40px;
+      width: 100%;
+      text-align: center;
+      font-family: 'Cinzel Decorative', cursive;
+      font-size: 48px;
+      color: white;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+
+    .logo img {
+      width: 100px;
+      height: 100px;
+      border-radius: 100px;
+    }
+
+    .login-card {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 320px;
+      margin-top: 120px;
+    }
+
+    .login-card input,
+    .login-card button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+
+    .login-card button {
+      background-color: #f8c8dc;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* Shop Page */
+    #shopPage {
+      display: none;
+      background-color: #f8c8dc;
+      min-height: 100vh;
+      flex-direction: row;
+    }
+
+    .sidebar {
+      width: 220px;
+      background-color: #fff;
+      padding: 20px;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .sidebar h2 {
+      font-family: 'Cinzel Decorative', cursive;
+      font-size: 24px;
+      margin-bottom: 30px;
+      color: #f8c8dc;
+    }
+
+    .nav-icon {
+      margin: 15px 0;
+      font-size: 18px;
+      cursor: pointer;
+      color: #333;
+    }
+
+    .main {
+      flex: 1;
+      padding: 40px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .header h1 {
+      font-family: 'Cinzel Decorative', cursive;
+      font-size: 36px;
+      color: white;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+    }
+
+    .logout-btn {
+      background-color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .cart-count {
+      background-color: #fff;
+      color: #f8c8dc;
+      font-weight: bold;
+      padding: 6px 12px;
+      border-radius: 20px;
+      margin-left: 10px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 20px;
+    }
+
+    .product {
+      background-color: white;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease;
+    }
+
+    .product:hover {
+      transform: scale(1.05);
+    }
+
+    .product img {
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    .product button {
+      background-color: #f8c8dc;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        display: none;
+      }
+
+      .main {
+        padding: 20px;
+      }
+
+      .header h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Login Page -->
+  <div id="loginPage">
+    <div class="logo">
+      <img src="C:\Users\Admin\Downloads\Untitled_design__3_-removebg-preview.png"alt="StyleNest Logo">
+    </div>
+    <div class="brand-header">StyleNest</div>
+    <div class="login-card">
+      <h2>Welcome Back</h2>
+      <input type="text" placeholder="Username" id="username">
+      <input type="password" placeholder="Password" id="password">
+      <button id="loginBtn">Login</button>
+    </div>
+  </div>
+
+  <!-- Shop Page -->
+  <div id="shopPage">
+    <div class="sidebar">
+      <h2>StyleNest</h2>
+      <div class="nav-icon">🏠 Home</div>
+      <div class="nav-icon">🛍️ Shop</div>
+      <div class="nav-icon">🛒 Cart</div>
+      <div class="nav-icon">⚙️ Settings</div>
+    </div>
+    <div class="main">
+      <div class="header">
+        <h1>Welcome to the Shop</h1>
+        <div>
+          <span class="cart-count" id="cartCount">Cart: 0</span>
+          <button class="logout-btn" onclick="logout()">Logout</button>
+        </div>
+      </div>
+      <div class="products" id="productGrid"></div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const loginBtn = document.getElementById("loginBtn");
+      loginBtn.addEventListener("click", function () {
+        const user = document.getElementById("username").value.trim();
+        const pass = document.getElementById("password").value.trim();
+        if (user && pass) {
+          document.getElementById("loginPage").style.display = "none";
+          document.getElementById("shopPage").style.display = "flex";
+          renderProducts();
+        } else {
+          alert("Please enter both username and password.");
+        }
+      });
+    });
+
+    const products = [
+      { id: 1, name: "Jeans", image: "https://i.pinimg.com/736x/bc/4c/ec/bc4cecf5078e4bf4409cdb4e0321e9c7.jpg" },
+      { id: 2, name: "Hoodie", image: "https://i.pinimg.com/1200x/3c/64/82/3c64821a423c2394816b81d528b4dad7.jpg" },
+      { id: 3, name: "Sneaker", image: "https://i.pinimg.com/736x/2b/f0/df/2bf0dfcbd8d1ee4791d30ab117dde892.jpg" }
+    ];
+
+    let cart = [];
+
+    function updateCartCount() {
+      document.getElementById("cartCount").textContent = `Cart: ${cart.length}`;
+    }
+
+    function toggleCart(id) {
+      const index = cart.indexOf(id);
+      if (index === -1) {
+        cart.push(id);
+      } else {
+        cart.splice(index, 1);
+      }
+      updateCartCount();
+      renderProducts();
+    }
+
+    function renderProducts() {
+      const grid = document.getElementById("productGrid");
+      grid.innerHTML = "";
+      products.forEach(p => {
+        const inCart = cart.includes(p.id);
+        grid.innerHTML += `
+          <div class="product">
+            <img src="${p.image}" alt="${p.name}">
+            <h3>${p.name}</h3>
+            <button onclick="toggleCart(${p.id})">
+              ${inCart ? "Remove from Cart" : "Add to Cart"}
+            </button>
+          </div>
+        `;
+      });
+    }
+
+    function logout() {
+      cart = [];
+      updateCartCount();
+      document.getElementById("shopPage").style.display = "none";
+      document.getElementById("loginPage").style.display = "flex";
+      document.getElementById("username").value = "";
+      document.getElementById("password").value = "";
+    }
+  </script>
+</body>
+<footer> Thank you for visiting our StyleNest</footer>
+</html>
